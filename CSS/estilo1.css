@@ -37,19 +37,52 @@ header {
     padding: 20px;
     background-color: #2196F3; /* Azul principal */
     color: #fff;
+    flex-wrap: wrap;
 }
 
-#cajaInicio, #cajaLogo{
-    width: 20%;
+#cajaLogo{
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    align-items: left;
 }
 
-.enlaceInicio{
-    margin-left: 10px;
+#titulo{
+    white-space: nowrap;
+}
+
+#cajaLogo, #cajaInicio{
+    width: 30%;
+}
+
+#cajaInicio {
+    display: flex;          /* Alinea los hijos en horizontal */
+    align-items: center;    /* Centra los elementos verticalmente */
+    gap: 0;                 /* Sin espacio entre "celdas" si quieres que peguen */
+    width: fit-content;     /* El nav solo ocupa lo que miden los textos */
+}
+
+.enlaceInicio {
+    display: block;
+    padding: 10px 20px;     /* Relleno para que parezcan celdas */
+    text-decoration: none;
+    color: white;           /* Cambia según tu fondo */
+    border-right: 1px solid #ccc; /* Línea divisoria entre "celdas" */
+    white-space: nowrap;
+}
+
+/* Quitamos el borde al último elemento para que se vea limpio */
+.enlaceInicio:last-child {
+    border-right: none;
+}
+
+
+
+/* Efecto visual al pasar el ratón por la "celda" */
+.enlaceInicio:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #cajaPerfil{
@@ -144,4 +177,23 @@ footer {
 #registrarse:active {
     transform: translateY(1px);
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/*Que a partir de 750px el titulo no aparezca y pase de flex-direction pase de row a column.*/
+
+@media (max-width: 750px) {
+    header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2196F3; /* Azul principal */
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+#titulo{
+    display: none;
+}
 }
