@@ -1,0 +1,106 @@
+/* ------------------------------- */
+/*          ESTILO GLOBAL          */
+/* ------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+    font-family: system-ui, sans-serif;
+    color: #424242;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: system-ui, sans-serif;
+    font-weight: 750;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.contenedorPrincipal {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------------------- */
+/*              HEADER             */
+/* ------------------------------- */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2196F3; /* Azul principal */
+    color: #fff;
+}
+
+#cajaInicio, #cajaLogo{
+    width: 20%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.enlaceInicio{
+    margin-left: 10px;
+}
+
+#cajaPerfil{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Logo */
+#imgLogo {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+/* Perfil */
+#imgPerfil {
+    width: 200px;
+    height: 200px;
+    display: block;
+    border-radius: 50%;
+}
+
+/* ------------------------------- */
+/*             ARTICLE             */
+/* ------------------------------- */
+
+article {
+    flex: 1;
+    padding: 30px;
+    background-color: #FFFFFF;
+}
+
+article h1 {
+    color: #2196F3; /* Para mantener el branding */
+}
+
+article p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ------------------------------- */
+/*              FOOTER             */
+/* ------------------------------- */
+
+footer {
+    padding: 20px;
+    background-color: #4CAF50; /* Verde complementario */
+    color: #fff;
+    text-align: center;
+    font-size: 0.9rem;
+}
