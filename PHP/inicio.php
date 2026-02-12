@@ -26,15 +26,18 @@
                 </div>
                 <br>
                 <br>
-                <div id="formularioRegistro">
-                    <label for="nomUsuario">Nombre de Usuario:</label>
-                    <input type="text" name="nomUsuario" id="nomUsuario">
-                    <br>
-                    <br>
-                    <label for="contraseña">Contraseña:</label>
-                    <input type="password" name="contraseña" id="contraseña">
-                    <br>
-                    <button type="submit" value="iniciar" id="registrarse">Iniciar sesion</button>
+                <div id="contenedorFormulario">
+                    <form action="" id="formularioRegistro">
+                        <label for="nomUsuario">Nombre de Usuario:</label>
+                        <input type="text" name="nomUsuario" id="nomUsuario">
+                        <br>
+                        <br>
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="password" name="contraseña" id="contraseña">
+                        <br>
+                        <p>¿No tienes una cuenta? <a href="registro.php">Cree una</a>.</p>
+                        <button type="submit" value="iniciar" id="registrarse">Iniciar sesion</button>
+                    </form>
                 </div>
             </article>
             <footer>

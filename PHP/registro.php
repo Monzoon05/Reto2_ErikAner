@@ -26,19 +26,21 @@
                 </div>
                 <br>
                 <br>
-                <div id="formularioRegistro">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre">
-                    <br>
-                    <br>
-                    <label for="nomUsuario">Nombre de Usuario:</label>
-                    <input type="text" name="nomUsuario" id="nomUsuario">
-                    <br>
-                    <br>
-                    <label for="contraseña">Contraseña:</label>
-                    <input type="password" name="contraseña" id="contraseña">
-                    <br>
-                    <button type="submit" value="registrarse" id="registrarse">Registrarse</button>
+                <div id="contenedorFormulario">
+                    <form action="" id="formularioRegistro">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre">
+                        <br>
+                        <br>
+                        <label for="nomUsuario">Nombre de Usuario:</label>
+                        <input type="text" name="nomUsuario" id="nomUsuario">
+                        <br>
+                        <br>
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="password" name="contraseña" id="contraseña">
+                        <br>
+                        <button type="submit" value="registrarse" id="registrarse">Registrarse</button>
+                    </form>
                 </div>
             </article>
             <footer>
