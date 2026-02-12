@@ -128,6 +128,9 @@ article {
     flex: 1;
     padding: 30px;
     background-color: #FFFFFF;
+}
+
+#cuerpo{
     background-image: url("../IMAGENES/imgFondo.png");
     background-size: cover; /* La imagen cubre todo el contenedor */
     background-position: center; /* Centra la imagen */
