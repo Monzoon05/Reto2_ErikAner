@@ -128,6 +128,10 @@ article {
     flex: 1;
     padding: 30px;
     background-color: #FFFFFF;
+    background-image: url("../IMAGENES/imgFondo.png");
+    background-size: cover; /* La imagen cubre todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
 }
 
 article h1 {
@@ -137,6 +141,41 @@ article h1 {
 article p {
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+/* Botón Jugar principal */
+#botonJugar {
+    position: absolute; /* para centrar en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #FF5722; /* naranja vibrante */
+    color: #FFFFFF;
+    font-family: system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    
+    padding: 25px 60px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+#botonJugar:hover {
+    background-color: #E64A19; /* naranja más oscuro */
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+
+/* Active / click */
+#botonJugar:active {
+    transform: translate(-50%, -50%) scale(0.98);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 /* ------------------------------- */

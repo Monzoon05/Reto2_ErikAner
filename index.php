@@ -19,12 +19,12 @@
                     <a href="PHP/registro.php" class="enlaceInicio registro">Registrarse</a>
                 </nav>
             </header>
-            <article>
-
-               
+            <article id="cuerpo">
+               <button id="botonJugar" onclick="empezarJuego()">Jugar</button>
             </article>
             <footer>
-                </footer>
+            
+            </footer>
         </div>
     </body>
 </html>
