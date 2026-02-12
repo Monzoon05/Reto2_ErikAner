@@ -3,20 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Mi Perfil</title>
-        <link rel="stylesheet" href="/CSS/estilo1.css">
+        <link rel="stylesheet" href="CSS/estilo1.css">
     </head>
     <body>
         <div class="contenedorPrincipal">
             <header>
                 <div id="cajaLogo">
-                    <a href="index.html"><img src="../IMAGENES/mm.png" id="imgLogo" alt="perfil"></a>
+                    <a href="index.php"><img src="IMAGENES/mm.png" id="imgLogo" alt="perfil"></a>
                 </div>
                 <div id="titulo">
                     <h1>Map Master</h1>
                 </div>
                 <nav id="cajaInicio">
-                    <a href="HTML/inicio.html" class="enlaceInicio">Iniciar Sesión</a>
-                    <a href="HTML/registro.html" class="enlaceInicio registro">Registrarse</a>
+                    <a href="PHP/inicio.php" class="enlaceInicio">Iniciar Sesión</a>
+                    <a href="PHP/registro.php" class="enlaceInicio registro">Registrarse</a>
                 </nav>
             </header>
             <article>
