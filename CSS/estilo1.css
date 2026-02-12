@@ -53,15 +53,15 @@ header {
     white-space: nowrap;
 }
 
+/*Que los dos tengan el mismo tamaño para que el titulo este centrado*/
 #cajaLogo, #cajaInicio{
-    width: 30%;
+    width: 251px;
 }
 
 #cajaInicio {
     display: flex;          /* Alinea los hijos en horizontal */
     align-items: center;    /* Centra los elementos verticalmente */
     gap: 0;                 /* Sin espacio entre "celdas" si quieres que peguen */
-    width: fit-content;     /* El nav solo ocupa lo que miden los textos */
 }
 
 .enlaceInicio {
