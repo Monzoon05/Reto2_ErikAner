@@ -40,6 +40,9 @@
             <footer>
                 </footer>
         </div>
-        <p>ErikMenendez</p>
+        <p>Erik Menendez</p>
+        <p>Erik Menendez</p>
+        <p>Erik Menendez</p>
+
     </body>
 </html>
