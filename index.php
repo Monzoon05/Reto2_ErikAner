@@ -26,5 +26,10 @@
             
             </footer>
         </div>
+        <script>
+            function empezarJuego() {
+            window.location.href = "PHP/juego.php";
+            }
+        </script>
     </body>
 </html>
