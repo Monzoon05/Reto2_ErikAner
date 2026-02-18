@@ -41,11 +41,7 @@
                 </div>
             </article>
             <footer>
-                </footer>
+            </footer>
         </div>
-        <p>Erik Menendez</p>
-        <p>Erik Menendez</p>
-        <p>Erik Menendez</p>
-        <p>ErikMenendez</p>
     </body>
 </html>
