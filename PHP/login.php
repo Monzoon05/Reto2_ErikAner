@@ -15,7 +15,7 @@ $resultado = $conexion->query($sql);
 
 if($resultado->num_rows == 1){
 
-    header("Location: probar.php?user=$usuario");
+    header("Location: ../index.php?user=$usuario");
 
 }else{
 

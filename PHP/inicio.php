@@ -27,7 +27,7 @@
                 <br>
                 <br>
                 <div id="contenedorFormulario">
-                    <form action="" id="formularioRegistro">
+                    <form action="login.php" id="formularioRegistro" method = "POST">
                         <label for="nomUsuario">Nombre de Usuario:</label>
                         <input type="text" name="nomUsuario" id="nomUsuario">
                         <br>
@@ -36,6 +36,11 @@
                         <input type="password" name="contraseña" id="contraseña">
                         <br>
                         <p>¿No tienes una cuenta? <a href="registro.php">Cree una</a>.</p>
+                            <?php
+                                if(isset($_GET["error"])){
+                                    echo "<p style='color:red'>".$_GET["error"]."</p>";
+                                }
+?>
                         <button type="submit" value="iniciar" id="registrarse">Iniciar sesion</button>
                     </form>
                 </div>
