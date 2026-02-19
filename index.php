@@ -40,7 +40,7 @@ $resultado = $conn->query($sql);
                 
     <button id="botonJugar" onclick="empezarJuego()">Jugar</button>
 
-    <div class="tablaTop">
+    <div id="tablaTop">
         <h2>🏆 Top 10 Jugadores</h2>
         <table>
             <tr>

@@ -238,7 +238,24 @@ footer {
 }
 }
 
-.tablaTop {
-        width: 80%;
-      background-color: none ; 
+#tablaTop {
+    border-collapse: collapse;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari */
+    background: rgba(255, 255, 255, 0.12); /* Transparencia */
+    border-radius: 15px;
+    overflow: hidden; /* Necesario para aplicar bien el borde redondeado */
+}
+
+/* Estilo de las celdas */
+#tablaTop th, #tablaTop td {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff; /* Cambia si necesitas otro color */
+}
+
+/* Cabecera de tabla */
+#tablaTop th {
+    background: rgba(255, 255, 255, 0.18);
 }
