@@ -154,7 +154,6 @@
             "Ireland",
             "Iceland",
             "Italy",
-            "Liechtenstein",
             "Lithuania",
             "Luxembourg",
             "Latvia",
@@ -187,6 +186,7 @@
         let juegoActivo = true;
         let paisesAcertados = [];
         let paisesDisponibles = [];
+        let partidaTerminada = false;
 
         // Elementos del DOM
         const puntuacionDiv = document.getElementById('puntuacion');
@@ -226,26 +226,122 @@
             return puntuacion;
         }
 
+function guardarYRedirigir(tipoFinal) {
+    if (partidaTerminada) return;
+    partidaTerminada = true;
+    juegoActivo = false;
+    
+    if (temporizador) clearInterval(temporizador);
+    
+    const puntuacionFinal = calcularPuntuacionFinal();
+    
+    // El tiempo que dura la partida suele ser (Tiempo Total - Tiempo Restante)
+    // Si quieres guardar los segundos que le han sobrado, usa tiempoRestante directamente
+    const tiempoJugado = 30 - tiempoRestante;
+
+    console.log('Guardando partida - Puntuación:', puntuacionFinal, 'Tiempo Jugado:', tiempoJugado);
+
+    // FormData es el formato más fiable para enviar POST a PHP
+    const formData = new FormData();
+    formData.append("puntuacion", puntuacionFinal);
+    formData.append("tiempo", tiempoJugado);
+
+    // IMPORTANTE: El nombre del archivo ahora coincide exactamente
+    fetch("guardarPartida.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Error en la red');
+        return response.json();
+    })
+    .then(data => {
+        console.log('Respuesta del servidor:', data);
+        
+        if (data.success) {
+            console.log("¡Éxito! Partida guardada con ID:", data.id_partida);
+        } else {
+            console.error("Fallo reportado por PHP:", data.error);
+        }
+
+        // Redirigir siempre después de un breve momento
+        setTimeout(() => {
+            if (tipoFinal === "ganado") {
+                window.location.href = "has_ganado.php?puntos=" + puntuacionFinal;
+            } else {
+                window.location.href = "game_over.php?puntos=" + puntuacionFinal;
+            }
+        }, 800);
+    })
+    .catch(error => {
+        console.error('Error fatal en fetch:', error);
+        
+        // Redirigir de todas formas para no bloquear al usuario
+        setTimeout(() => {
+            if (tipoFinal === "ganado") {
+                window.location.href = "has_ganado.php?puntos=" + puntuacionFinal;
+            } else {
+                window.location.href = "game_over.php?puntos=" + puntuacionFinal;
+            }
+        }, 800);
+    });
+}
+
         function finDelJuegoVictoria() {
+            if (!juegoActivo || partidaTerminada) return;
+            
             juegoActivo = false;
             clearInterval(temporizador);
+            
             const puntuacionFinal = calcularPuntuacionFinal();
             nomPaisDiv.textContent = `¡VICTORIA! Puntuación final: ${puntuacionFinal}`;
             
             document.querySelectorAll('path').forEach(path => {
                 path.style.pointerEvents = 'none';
             });
+            
+            // Redirigir después de un breve retraso para mostrar el mensaje
+            setTimeout(() => {
+                guardarYRedirigir("ganado");
+            }, 1500);
         }
 
         function finDelJuego() {
+            if (!juegoActivo || partidaTerminada) return;
+            
             juegoActivo = false;
             clearInterval(temporizador);
+            
             const puntuacionFinal = calcularPuntuacionFinal();
             nomPaisDiv.textContent = `¡GAME OVER! Puntuación final: ${puntuacionFinal}`;
             
             document.querySelectorAll('path').forEach(path => {
                 path.style.pointerEvents = 'none';
             });
+            
+            // Redirigir después de un breve retraso para mostrar el mensaje
+            setTimeout(() => {
+                guardarYRedirigir("perdido");
+            }, 1500);
+        }
+
+        function finDelJuegoPorTiempo() {
+            if (!juegoActivo || partidaTerminada) return;
+            
+            juegoActivo = false;
+            clearInterval(temporizador);
+            
+            const puntuacionFinal = calcularPuntuacionFinal();
+            nomPaisDiv.textContent = `¡TIEMPO AGOTADO! Puntuación final: ${puntuacionFinal}`;
+            
+            document.querySelectorAll('path').forEach(path => {
+                path.style.pointerEvents = 'none';
+            });
+            
+            // Redirigir después de un breve retraso para mostrar el mensaje
+            setTimeout(() => {
+                guardarYRedirigir("perdido");
+            }, 1500);
         }
 
         function iniciarTemporizador() {
@@ -254,13 +350,13 @@
                     tiempoRestante--;
                     actualizarTiempo();
                 } else {
-                    finDelJuego();
+                    finDelJuegoPorTiempo();
                 }
             }, 1000);
         }
 
         function verificarPais(pathElement) {
-            if (!juegoActivo) return;
+            if (!juegoActivo || partidaTerminada) return;
             
             const namePais = pathElement.getAttribute('name');
             
@@ -297,12 +393,32 @@
                 }
             }
         }
+    function guardarPartidaEnBDD(puntuacionFinal, tiempoTranscurrido) {
+    const formData = new FormData();
+    formData.append('puntuacion', puntuacionFinal);
+    formData.append('tiempo', tiempoTranscurrido);
 
+    fetch('guardarPartida.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Partida guardada con éxito. ID: " + data.id_partida);
+            alert("¡Partida guardada! Puntuación: " + puntuacionFinal);
+        } else {
+            console.error("Error al guardar:", data.error);
+        }
+    })
+    .catch(error => console.error('Error en la petición:', error));
+}
         function iniciarJuego() {
             puntuacion = 0;
             vidas = 5;
             tiempoRestante = 30;
             juegoActivo = true;
+            partidaTerminada = false;
             paisesAcertados = [];
             paisesDisponibles = [...paises];
             
@@ -318,11 +434,10 @@
             
             elegirPaisAleatorio();
             
+            // Eliminar event listeners anteriores para evitar duplicados
             paths.forEach(path => {
-                path.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    verificarPais(this);
-                });
+                path.removeEventListener('click', manejarClick);
+                path.addEventListener('click', manejarClick);
             });
             
             // Inicializar zoom en el mapa
@@ -343,6 +458,12 @@
             
             if (temporizador) clearInterval(temporizador);
             iniciarTemporizador();
+        }
+
+        // Función manejadora de clics separada
+        function manejarClick(event) {
+            event.stopPropagation();
+            verificarPais(this);
         }
 
         document.addEventListener('DOMContentLoaded', iniciarJuego);
