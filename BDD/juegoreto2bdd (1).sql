@@ -1,31 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2026 a las 13:39:51
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `juegoreto2bdd`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `paises`
---
 
 CREATE TABLE `paises` (
   `id_pais` int(11) NOT NULL,
@@ -34,10 +11,6 @@ CREATE TABLE `paises` (
   `continente` varchar(50) DEFAULT NULL,
   `svg_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `paises`
---
 
 INSERT INTO `paises` (`id_pais`, `nombre`, `codigo_iso`, `continente`, `svg_id`) VALUES
 (1, 'España', 'ES', 'Europa', 'spain'),
@@ -87,11 +60,7 @@ INSERT INTO `paises` (`id_pais`, `nombre`, `codigo_iso`, `continente`, `svg_id`)
 (45, 'San Marino', 'SM', 'Europa', 'san_marino'),
 (46, 'Ciudad del Vaticano', 'VA', 'Europa', 'vatican_city');
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `partidas`
---
 
 CREATE TABLE `partidas` (
   `id_partida` int(11) NOT NULL,
@@ -102,9 +71,6 @@ CREATE TABLE `partidas` (
   `modo_juego` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `partidas`
---
 
 INSERT INTO `partidas` (`id_partida`, `id_usuario`, `puntuacion`, `tiempo`, `fecha`, `modo_juego`) VALUES
 (1, 1, 1, 0, '2026-02-08 00:00:00', 'Europa'),
@@ -112,11 +78,6 @@ INSERT INTO `partidas` (`id_partida`, `id_usuario`, `puntuacion`, `tiempo`, `fec
 (3, 3, 1312, 420, '2026-02-08 00:00:00', 'America'),
 (4, 4, 1111, 390, '2026-02-08 00:00:00', 'Asia');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
@@ -125,73 +86,37 @@ CREATE TABLE `usuarios` (
   `contraseña` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `usuarios`
---
-
 INSERT INTO `usuarios` (`id`, `nombre`, `nombreUsuario`, `contraseña`) VALUES
 (1, 'Erik', 'Erik_EUSK', '1234'),
 (2, 'Aner', 'Monzon05', '1312'),
 (3, 'Herce', 'MarioGamer777', '1111'),
 (4, 'Peru', 'Papraiz', '0000');
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `paises`
---
 ALTER TABLE `paises`
   ADD PRIMARY KEY (`id_pais`),
   ADD UNIQUE KEY `svg_id` (`svg_id`);
 
---
--- Indices de la tabla `partidas`
---
 ALTER TABLE `partidas`
   ADD PRIMARY KEY (`id_partida`),
   ADD KEY `fk_partidas_usuarios` (`id_usuario`);
 
---
--- Indices de la tabla `usuarios`
---
+
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `paises`
---
 ALTER TABLE `paises`
   MODIFY `id_pais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
---
--- AUTO_INCREMENT de la tabla `partidas`
---
 ALTER TABLE `partidas`
   MODIFY `id_partida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
+
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- Restricciones para tablas volcadas
---
 
---
--- Filtros para la tabla `partidas`
---
 ALTER TABLE `partidas`
   ADD CONSTRAINT `fk_partidas_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
