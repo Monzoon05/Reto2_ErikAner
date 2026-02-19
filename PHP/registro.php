@@ -26,8 +26,8 @@
                 </div>
                 <br>
                 <br>
-                <div id="formularioRegistro">
-                    <form action="login.php" method="POST">
+                <div id="contenedorFormulario">
+                    <form action="registroUsuario.php" method="POST" id="formularioRegistro">
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" id="nombre">
                         <br>
@@ -39,6 +39,11 @@
                         <label for="contraseña">Contraseña:</label>
                         <input type="password" name="contraseña" id="contraseña">
                         <br>
+                        <?php
+                            if(isset($_GET["error"])){
+                                echo "<p style='color:red'>".$_GET["error"]."</p>";
+                                }
+                        ?>
                         <button type="submit" value="registrarse" id="registrarse">Registrarse</button>
                     </form>
                 </div>

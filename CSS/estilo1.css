@@ -59,28 +59,26 @@ header {
 }
 
 #cajaInicio {
-    display: flex;          /* Alinea los hijos en horizontal */
-    align-items: center;    /* Centra los elementos verticalmente */
-    gap: 0;                 /* Sin espacio entre "celdas" si quieres que peguen */
+    display: flex;       
+    align-items: center;
+    gap: 0;              
 }
 
 .enlaceInicio {
     display: block;
-    padding: 10px 20px;     /* Relleno para que parezcan celdas */
+    padding: 10px 20px;
     text-decoration: none;
-    color: white;           /* Cambia según tu fondo */
-    border-right: 1px solid #ccc; /* Línea divisoria entre "celdas" */
+    color: white;
+    border-right: 1px solid #ccc;
     white-space: nowrap;
 }
 
-/* Quitamos el borde al último elemento para que se vea limpio */
+
 .enlaceInicio:last-child {
     border-right: none;
 }
 
 
-
-/* Efecto visual al pasar el ratón por la "celda" */
 .enlaceInicio:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -130,13 +128,55 @@ article {
     background-color: #FFFFFF;
 }
 
+#cuerpo{
+    background-image: url("../IMAGENES/imgFondo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 article h1 {
-    color: #2196F3; /* Para mantener el branding */
+    color: #2196F3;
 }
 
 article p {
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+/* Botón Jugar principal */
+#botonJugar {
+    position: absolute; /* para centrar en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #FF5722;
+    color: #FFFFFF;
+    font-family: system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    
+    padding: 25px 60px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+#botonJugar:hover {
+    background-color: #E64A19;
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+
+/* Active / click */
+#botonJugar:active {
+    transform: translate(-50%, -50%) scale(0.98);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 /* ------------------------------- */
@@ -145,7 +185,7 @@ article p {
 
 footer {
     padding: 20px;
-    background-color: #4CAF50; /* Verde complementario */
+    background-color: #4CAF50;
     color: #fff;
     text-align: center;
     font-size: 0.9rem;
@@ -153,9 +193,9 @@ footer {
 
 /* Boton de registrarse */
 #registrarse {
-    background-color: #FFC107; /* Amarillo del acento */
-    color: #222; /* Contraste con el amarillo */
-    font-family: system-ui, sans-serif; /* coherente con el resto de la página */
+    background-color: #FFC107;
+    color: #222;
+    font-family: system-ui, sans-serif;
     font-weight: 600;
     font-size: 1rem;
     padding: 12px 25px;
@@ -168,7 +208,7 @@ footer {
 
 /* Hover */
 #registrarse:hover {
-    background-color: #FFB300; /* Un amarillo un poco más oscuro */
+    background-color: #FFB300;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
@@ -196,4 +236,9 @@ footer {
 #titulo{
     display: none;
 }
+}
+
+.tablaTop {
+        width: 80%;
+      background-color:   
 }

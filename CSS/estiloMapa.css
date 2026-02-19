@@ -1,0 +1,31 @@
+body{
+    background-color: #E3F2FD;
+    display: flex;
+    place-content: center center;
+}
+
+.contenedorPrincipal {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#container{
+    width: 50%;
+}
+
+#container path{
+    fill: #4CAF50;
+    stroke: #388E3C;
+}
+
+#container :hover{
+    fill: #FFC107;
+}
+
+#cabezera{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
