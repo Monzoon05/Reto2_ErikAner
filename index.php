@@ -37,35 +37,33 @@ $resultado = $conn->query($sql);
                 </nav>
             </header>
             <article id="cuerpo">
-                
-    <button id="botonJugar" onclick="empezarJuego()">Jugar</button>
 
-    <div id="tablaTop">
-        <h2>🏆 Top 10 Jugadores</h2>
-        <table>
-            <tr>
-                <th>Posición</th>
-                <th>Jugador</th>
-                <th>Puntuación</th>
-            </tr>
+                <div id="tablaTop">
+                    <h2>🏆 Top 10 Jugadores</h2>
+                    <table>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Jugador</th>
+                            <th>Puntuación</th>
+                        </tr>
 
-            <?php
-            $posicion = 1;
-            if ($resultado->num_rows > 0) {
-                while ($fila = $resultado->fetch_assoc()) {
-                    echo "<tr>
-                            <td>".$posicion."</td>
-                            <td>".$fila['nombre']."</td>
-                            <td>".$fila['mejor_puntuacion']."</td>
-                          </tr>";
-                    $posicion++;
-                }
-            } else {
-                echo "<tr><td colspan='3'>No hay datos</td></tr>";
-            }
-            ?>
-        </table>
-    </div>
+                        <?php
+                        $posicion = 1;
+                        if ($resultado->num_rows > 0) {
+                            while ($fila = $resultado->fetch_assoc()) {
+                                echo "<tr>
+                                        <td>".$posicion."</td>
+                                        <td>".$fila['nombre']."</td>
+                                        <td>".$fila['mejor_puntuacion']."</td>
+                                    </tr>";
+                                $posicion++;
+                            }
+                        } else {
+                            echo "<tr><td colspan='3'>No hay datos</td></tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
 
                <button id="botonJugar" onclick="empezarJuego()">Jugar</button>
             </article>

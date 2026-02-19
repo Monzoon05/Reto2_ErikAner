@@ -133,6 +133,8 @@ article {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: right;
 }
 
 article h1 {
@@ -220,9 +222,8 @@ footer {
 }
 
 /*Que a partir de 750px el titulo no aparezca y pase de flex-direction pase de row a column.*/
-
 @media (max-width: 750px) {
-    header {
+    header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -236,11 +237,33 @@ footer {
 #titulo{
     display: none;
 }
+
+article, #cuerpo{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#botonJugar{
+    order: 1;
+    position: static;
+    align-items: center;
+}
+
+    /* Ajustes para la tabla en móvil */
+    #tablaTop {
+        order: 2;
+        width: 90%;
+        max-width: 100%;
+        margin: 20px auto;
+    }
 }
 
 #tablaTop {
     border-collapse: collapse;
-    width: 100%;
+    width: fit-content;
+    height: fit-content;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px); /* Safari */
     background: rgba(255, 255, 255, 0.12); /* Transparencia */
@@ -252,7 +275,7 @@ footer {
 #tablaTop th, #tablaTop td {
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff; /* Cambia si necesitas otro color */
+    color: #424242;
 }
 
 /* Cabecera de tabla */
